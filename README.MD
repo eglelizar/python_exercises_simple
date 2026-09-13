@@ -17,6 +17,7 @@ Execute the following command from the root directory of your project to run the
 ---
 python -m unittest Tests/Arrays/StringElementsAreUniqueTests.py
 python -m unittest Tests/Arrays/TwoArraySearchTargetTests.py
+python -m unittest Tests/Arrays/GroupAnagramsTests.py
 ---
 
 
