@@ -15,7 +15,8 @@ Running the Tests
 Execute the following command from the root directory of your project to run the array uniqueness test suite:
 
 ---
-python -m unittest Tests/Arrays/StringElementsAreUniqueTests.p
+python -m unittest Tests/Arrays/StringElementsAreUniqueTests.py
+python -m unittest Tests/Arrays/TwoArraySearchTargetTests.py
 ---
 
 
