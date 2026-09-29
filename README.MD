@@ -19,6 +19,7 @@ python -m unittest Tests/Arrays/StringElementsAreUniqueTests.py
 python -m unittest Tests/Arrays/TwoArraySearchTargetTests.py
 python -m unittest Tests/Arrays/GroupAnagramsTests.py
 python -m unittest Tests/Arrays/ZeroMatrixTests.py
+python -m unittest Tests/LinkedList/LinkedListTests.py
 ---
 
 
