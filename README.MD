@@ -11,6 +11,9 @@ Arrays/: Core implementations of array and string manipulation algorithms.
 
 Tests/: Unit test suites using Python's built-in unittest framework to verify correctness.
 
+Graphs/: Graph node and adjacency-list graph implementations, including iterative
+depth-first search (DFS).
+
 Running the Tests
 Execute the following command from the root directory of your project to run the array uniqueness test suite:
 
@@ -21,6 +24,17 @@ python -m unittest Tests/Arrays/GroupAnagramsTests.py
 python -m unittest Tests/Arrays/ZeroMatrixTests.py
 python -m unittest Tests/LinkedList/LinkedListTests.py
 ---
+
+Run the DFS tests with pytest:
+
+---
+python -m pytest Tests/Graph/test_graph.py
+---
+
+The graph uses an adjacency list, so DFS takes O(V + E) time and O(V) traversal
+space. `Graph.dfs(start)` visits only vertices reachable from `start`;
+`Graph.dfs_all()` also visits disconnected components. Traversal is iterative to
+avoid Python's recursion-depth limit and follows neighbor insertion order.
 
 
 Core Topics Covered
