@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Generic, Hashable, Iterator, TypeVar
 
+from collections import deque
+
 from Graphs.Node import Node
 
 
@@ -96,6 +98,26 @@ class Graph(Generic[T]):
                 continue
             visited.add(root)
             self._traverse_from(root, visited, traversal)
+
+        return traversal
+
+    def bfs(self, start: T) -> list[T]:
+        """Return breadth-first level-order traversal reachable from start.
+
+        Takes O(V + E) time and O(V) auxiliary space using a deque queue.
+        """
+        start_node = self.get_node(start)
+        visited = {start_node}
+        traversal: list[T] = []
+        queue = deque([start_node])
+
+        while queue:
+            current = queue.popleft()
+            traversal.append(current.value)
+            for neighbor in current.neighbors:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
 
         return traversal
 

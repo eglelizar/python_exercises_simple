@@ -113,3 +113,31 @@ def test_print_graph_formats_vertices_and_neighbors(capsys):
     graph.print_graph()
 
     assert capsys.readouterr().out == "'A': 'B'\n'B': 'A'\n'isolated': \n"
+
+
+def test_bfs_level_order_traversal():
+    """Verify that BFS explores nodes level by level in correct order."""
+    g = Graph[str](directed=False)
+    # Constructing a simple tree-like graph structure
+    g.add_edge("A", "B")
+    g.add_edge("A", "C")
+    g.add_edge("B", "D")
+    g.add_edge("B", "E")
+
+    bfs_result = g.bfs("A")
+
+    # Root must be first
+    assert bfs_result[0] == "A"
+    # Level 1 nodes must follow (B and C in some valid order depending on insertion)
+    assert set(bfs_result[1:3]) == {"B", "C"}
+    # Level 2 nodes must follow (D and E)
+    assert set(bfs_result[3:]) == {"D", "E"}
+
+
+def test_bfs_nonexistent_start_node_raises_key_error():
+    """Verify that starting BFS from an invalid node raises KeyError."""
+    g = Graph[int](directed=False)
+    g.add_node(1)
+
+    with pytest.raises(KeyError):
+        g.bfs(99)
